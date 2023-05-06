@@ -1,0 +1,11 @@
+This code implements a basic proof-of-work algorithm for mining blocks in a blockchain network. The idea is to find a nonce value that results in a hash for the block data that meets a certain criteria, such as having a certain number of leading zeroes.
+
+The hashlib library is used to calculate SHA-256 hashes of the block data with different nonce values. The mine function takes in the block number, transaction data, and previous hash as input parameters. It then iterates over a range of possible nonce values from 0 to NONCE_LIMIT, concatenating the block data and nonce to form a base text, and calculating its SHA-256 hash.
+
+This code defines a function 'mine' that attempts to mine a new block by finding a hash that starts with a certain number of zeroes. The block's content is determined by three input parameters: block_number, transaction, and previous_hash. The nonce is incremented from 0 to NONCE_LIMIT and combined with the other parameters to create a base text that is hashed using the SHA-256 algorithm provided by the hashlib library. If the hash starts with the specified number of zeroes, the function returns the hash value along with the nonce used to generate it. If no suitable hash is found, the function returns -1.
+
+In this case, the code calls the mine function with the parameters block_number = 24, transaction = "76123fcc2142", and previous_hash = "876de8756b967c87". The number of zeroes required at the start of the hash is defined by the zeroes variable and set to 4.
+
+The mine function then attempts to find a suitable hash by iterating through a range of values for nonce from 0 to NONCE_LIMIT (set to 100 billion). It combines the input parameters and the current nonce value into a single string using string concatenation and encodes the resulting string as bytes using UTF-8 encoding. It then uses the hashlib library to hash the resulting bytes using the SHA-256 algorithm, and retrieves the hexadecimal representation of the hash by calling the hexdigest method.
+
+If the resulting hash starts with the specified number of zeroes, the function prints a message indicating the nonce that was used to generate the hash, and returns the hash value. If no suitable hash is found within the specified nonce range, the function returns -1.
